@@ -12,3 +12,7 @@ sudo rm data/db/pg_tblspc/plik
 ```
 sudo docker-compose up
 ```
+Projekt jest uruchomiony! Aby skorzystać z aplikacji należy uruchomić przeglądarkę i jako adres wpisać:
+```
+localhost:8000
+```
