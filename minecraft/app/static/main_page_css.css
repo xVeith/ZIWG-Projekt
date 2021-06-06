@@ -1,0 +1,21 @@
+#show_bg_2 {
+    background-image:
+        linear-gradient(to bottom, rgba(181, 182, 195, 0.712), rgba(35, 34, 39, 0.918)),
+        url('https://i.imgur.com/8vd71jz.png');
+    width: 100%;
+    height: 1000px;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    animation: gradient 15s ease infinite;
+}
+
+@font-face {
+    font-family: "minecraftia";
+    src: url("fonts/Minecraftia-Regular.ttf");
+}
+
+h1 {
+    font-family: "minecraftia", monospace;
+    font-size: 2em;
+}

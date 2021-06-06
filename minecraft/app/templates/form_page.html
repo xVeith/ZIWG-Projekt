@@ -1,0 +1,199 @@
+<html>
+<style>
+  #show_bg_2 {
+    background-image:
+      linear-gradient(to bottom, rgba(181, 182, 195, 0.712), rgba(35, 34, 39, 0.918)),
+      url('https://i.imgur.com/8vd71jz.png');
+    width: 100%;
+    height: 1000px;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    animation: gradient 15s ease infinite;
+  }
+</style>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Minecraft enchanting tool</title>
+  <link rel="stylesheet" href="/static/bootstrap.css">
+</head>
+<style>
+  /* Paste this css to your style sheet file or under head tag */
+  /* This only works with JavaScript, 
+if it's not present, don't show loader */
+  /* .no-js #loader {
+    display: none;
+  }
+
+  .js #loader {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 0;
+  }
+
+  .se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(https://smallenvelop.com/wp-content/uploads/2014/08/Preloader_11.gif) center no-repeat #fff;
+  } */
+
+  .lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+<script>
+  //paste this code under the head tag or in a separate js file.
+  // Wait for window load
+  $(window).load(function () {
+    // Animate loader off screen
+    // $(".se-pre-con").fadeOut("slow");;
+    $(".lds-roller").fadeOut("slow");;
+  });
+</script>
+<script>
+
+function foo() {
+  // $(".se-pre-con").show();;
+  $(".lds-roller").show();;
+   return true;
+}
+</script>
+<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+<body class="text-center" id='show_bg_2'>
+  <br>
+  <h2> Chosen item: {{chosenItem}} </h2>
+  <h2>Now enter the enchants you have on each of your items...</h2>
+  <br>
+  <form action="step3" method="post" id="form2">
+    {% for pe in possible_enchants %}
+    <input type="hidden" name="itemCount" value="{{forloop.counter}}">
+    <input type="hidden" name="itemName" value="{{chosenItem}}">
+    <input type="hidden" name="{{forloop.counter}}item" value="{{pe.name}}">
+    Enter your {{pe.name}} enchants: <br>
+    </input>
+    <input type="hidden">
+    <select name="{{forloop.counter}}ownedEnchant1">
+      <option>-------------</option>
+      {% for e in pe.enchants %}
+      <option value="{{e.name}} {{e.level}}">{{e.name}} {{e.level}}</option>
+      {% endfor %}
+    </select>
+    </input>
+    <input type="hidden">
+    <select name="{{forloop.counter}}ownedEnchant2">
+      <option>-------------</option>
+      {% for e in pe.enchants %}
+      <option value="{{e.name}} {{e.level}}">{{e.name}} {{e.level}}</option>
+      {% endfor %}
+    </select>
+    </input>
+    <input type="hidden">
+    <select name="{{forloop.counter}}ownedEnchant3">
+      <option>-------------</option>
+      {% for e in pe.enchants %}
+      <option value="{{e.name}} {{e.level}}">{{e.name}} {{e.level}}</option>
+      {% endfor %}
+    </select>
+    </input>
+    <br><br>
+    {% endfor %}
+    <button type="submit" action='submit' id="submitForm2" class="btn btn-primary" onclick="return foo();" >Find the best
+      combinations!</button>
+
+  </form>
+</body>
+
+
+
+</html>

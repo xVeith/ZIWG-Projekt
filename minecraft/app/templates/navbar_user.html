@@ -1,0 +1,21 @@
+<nav class="navbar sticky-top " style="background-color: #e3f2fd;">
+	<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+		<div class="btn-group mr-5" role="group" aria-label="First group">
+			<form action="/user/{{username}}/" method="post">
+				Jesteś zalogowany jako: <button class="btn btn-secondary" type="submit" name="your_name"
+					value="{{username}}">{{ username }} (przejdź do swojego profilu)</button>
+			</form>
+		</div>
+		<div class="btn-group mr-5" role="group" aria-label="Fourth group">
+			<form action="/show_all_puzzles" method="post">
+				<button class="btn btn-secondary" type="submit" name="your_name" value="{{username}}">Przejdź do
+					głównego katalogu</button>
+			</form>
+		</div>
+		<div class="btn-group mr-5" role="group" aria-label="Third group">
+			<form type="submit" action="/logout">
+				<button class="btn btn-secondary" type="submit">Wyloguj się</button>
+			</form>
+		</div>
+	</div>
+</nav>

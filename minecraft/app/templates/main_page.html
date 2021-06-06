@@ -1,0 +1,235 @@
+<html>
+<!-- https://wall.alphacoders.com/profile.php?id=113564 zrodlo tła -->
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Minecraft enchanting tool</title>
+  <!-- css ze stylami strony -->
+  <link rel="stylesheet" href="/static/main_page_css.css">
+  <!-- czcionka minecraftowa dla nagłówka -->
+  <link rel="stylesheet" href="static/fonts/Minecraft.ttf">
+  <!-- ładne ikonki -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+    integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/static/bootstrap.css">
+  <script>
+    var alercik = {{ wrong }};
+    if (alercik == 1) { window.alert("Wprowadzono za dużą liczbę przedmiotów! System obsługuje do 10 przedmiotów."); }
+    if (alercik == 2) { window.alert("W podanych przez Ciebie przedmiotach nie ma żadnego, z którego można by stworzyć wybrany przez Ciebie przedmiot!"); }
+  </script>
+</head>
+
+<script>
+  function ShowDiv2() { document.getElementById("myDiv2").style.display = "";}
+  function ShowDiv3() { document.getElementById("myDiv3").style.display = ""; }
+  function ShowDiv4() { document.getElementById("myDiv4").style.display = ""; }
+  function ShowDiv5() { document.getElementById("myDiv5").style.display = ""; }
+  function ShowDiv6() { document.getElementById("myDiv6").style.display = ""; }
+  function ShowDiv7() { document.getElementById("myDiv7").style.display = ""; }
+  function ShowDiv8() { document.getElementById("myDiv8").style.display = ""; }
+  function ShowDiv9() { document.getElementById("myDiv9").style.display = ""; }
+  function ShowDiv10() { document.getElementById("myDiv10").style.display = ""; }
+</script>
+
+<body class="text-center" id='show_bg_2'>
+  <br /><br />
+  <input type="hidden" value="{{wrong}}" id="wrongs" />
+  <h1 class="font-weight-bold"><i class="fas fa-dice-d6"></i></h1>
+  <p></p>
+  <h1>App supporting combining item enchantments</h1>
+  <form action="step2" method="post">
+    <h3>What item do you want to enchant?</h3>
+    <input type="hidden">
+    <select name="chosenItem">
+      {% for i in Items %}
+      <option value="{{i.name}}">{{i.name}}</option>
+      {% endfor %}
+    </select>
+    </input>
+    <br><br>
+
+    What items do you have and how many of them?<br>
+    #1 item type
+    <input type="hidden">
+    <select name="ownedItemType1">
+      {% for i in Items %}
+      <option value="{{i.name}}">{{i.name}}</option>
+      {% endfor %}
+    </select>
+    </input>
+    <input type="hidden">
+    <select name="ownedType1Count">
+      {% for i in '0123456789'|make_list %}
+      <option value="{{i}}">{{i}} </option>
+      {% endfor %}
+    </select>
+    </input>
+    <input type="button" name="add2" onclick="ShowDiv2()" value="+" />
+    <br>
+    <div id="myDiv2" style="display:none;" class="answer_list">
+      #2 item type
+      <input type="hidden">
+      <select name="ownedItemType2">
+        {% for i in Items %}
+        <option value="{{i.name}}">{{i.name}}</option>
+        {% endfor %}
+      </select>
+      </input>
+      <input type="hidden">
+      <select name="ownedType2Count">
+        {% for i in '0123456789'|make_list %}
+        <option value="{{i}}">{{i}} </option>
+        {% endfor %}
+      </select>
+      </input>
+      <input type="button" name="add3" onclick="ShowDiv3()" value="+" />
+      <div id="myDiv3" style="display:none;" class="answer_list">
+        #3 item type
+        <input type="hidden">
+        <select name="ownedItemType3">
+          {% for i in Items %}
+          <option value="{{i.name}}">{{i.name}}</option>
+          {% endfor %}
+        </select>
+        </input>
+        <input type="hidden">
+        <select name="ownedType3Count">
+          {% for i in '0123456789'|make_list %}
+          <option value="{{i}}">{{i}} </option>
+          {% endfor %}
+        </select>
+        </input>
+        <input type="button" name="add4" onclick="ShowDiv4()" value="+" />
+        <div id="myDiv4" style="display:none;" class="answer_list">
+          #4 item type
+          <input type="hidden">
+          <select name="ownedItemType4">
+            {% for i in Items %}
+            <option value="{{i.name}}">{{i.name}}</option>
+            {% endfor %}
+          </select>
+          </input>
+          <input type="hidden">
+          <select name="ownedType4Count">
+            {% for i in '0123456789'|make_list %}
+            <option value="{{i}}">{{i}} </option>
+            {% endfor %}
+          </select>
+          </input>
+          <input type="button" name="add5" onclick="ShowDiv5()" value="+" />
+          <div id="myDiv5" style="display:none;" class="answer_list">
+            #5 item type
+            <input type="hidden">
+            <select name="ownedItemType5">
+              {% for i in Items %}
+              <option value="{{i.name}}">{{i.name}}</option>
+              {% endfor %}
+            </select>
+            </input>
+            <input type="hidden">
+            <select name="ownedType5Count">
+              {% for i in '0123456789'|make_list %}
+              <option value="{{i}}">{{i}} </option>
+              {% endfor %}
+            </select>
+            </input>
+            <input type="button" name="add6" onclick="ShowDiv6()" value="+" />
+            <div id="myDiv6" style="display:none;" class="answer_list">
+              #6 item type
+              <input type="hidden">
+              <select name="ownedItemType6">
+                {% for i in Items %}
+                <option value="{{i.name}}">{{i.name}}</option>
+                {% endfor %}
+              </select>
+              </input>
+              <input type="hidden">
+              <select name="ownedType6Count">
+                {% for i in '0123456789'|make_list %}
+                <option value="{{i}}">{{i}} </option>
+                {% endfor %}
+              </select>
+              </input>
+              <input type="button" name="add7" onclick="ShowDiv7()" value="+" />
+              <div id="myDiv7" style="display:none;" class="answer_list">
+                #7 item type
+                <input type="hidden">
+                <select name="ownedItemType7">
+                  {% for i in Items %}
+                  <option value="{{i.name}}">{{i.name}}</option>
+                  {% endfor %}
+                </select>
+                </input>
+                <input type="hidden">
+                <select name="ownedType7Count">
+                  {% for i in '0123456789'|make_list %}
+                  <option value="{{i}}">{{i}} </option>
+                  {% endfor %}
+                </select>
+                </input>
+                <input type="button" name="add8" onclick="ShowDiv8()" value="+" />
+                <div id="myDiv8" style="display:none;" class="answer_list">
+                  #8 item type
+                  <input type="hidden">
+                  <select name="ownedItemType8">
+                    {% for i in Items %}
+                    <option value="{{i.name}}">{{i.name}}</option>
+                    {% endfor %}
+                  </select>
+                  </input>
+                  <input type="hidden">
+                  <select name="ownedType8Count">
+                    {% for i in '0123456789'|make_list %}
+                    <option value="{{i}}">{{i}} </option>
+                    {% endfor %}
+                  </select>
+                  </input>
+                  <input type="button" name="add9" onclick="ShowDiv9()" value="+" />
+                  <div id="myDiv9" style="display:none;" class="answer_list">
+                    #9 item type
+                    <input type="hidden">
+                    <select name="ownedItemType9">
+                      {% for i in Items %}
+                      <option value="{{i.name}}">{{i.name}}</option>
+                      {% endfor %}
+                    </select>
+                    </input>
+                    <input type="hidden">
+                    <select name="ownedType9Count">
+                      {% for i in '0123456789'|make_list %}
+                      <option value="{{i}}">{{i}} </option>
+                      {% endfor %}
+                    </select>
+                    </input>
+                    <input type="button" name="add10" onclick="ShowDiv10()" value="+" />
+                    <div id="myDiv10" style="display:none;" class="answer_list">
+                      #10 item type
+                      <input type="hidden">
+                      <select name="ownedItemType10">
+                        {% for i in Items %}
+                        <option value="{{i.name}}">{{i.name}}</option>
+                        {% endfor %}
+                      </select>
+                      </input>
+                      <input type="hidden">
+                      <select name="ownedType10Count">
+                        {% for i in '0123456789'|make_list %}
+                        <option value="{{i}}">{{i}} </option>
+                        {% endfor %}
+                      </select>
+                      </input>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <button type="submit" action='submit' id="submitForm1" class="btn btn-primary" >Next</button>
+  </form>
+</body>
+
+</html>

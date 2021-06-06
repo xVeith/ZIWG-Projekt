@@ -1,0 +1,92 @@
+<html>
+<style>
+  #show_bg_2 {
+    background-image:
+      linear-gradient(to bottom, rgba(181, 182, 195, 0.712), rgba(35, 34, 39, 0.918)),
+      url('https://i.imgur.com/8vd71jz.png');
+    width: 100%;
+    height: 1000px;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    animation: gradient 15s ease infinite;
+  }
+</style>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Minecraft enchanting tool</title>
+  <link rel="stylesheet" href="/static/bootstrap.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+
+<body class="text-center" id='show_bg_2'>
+  <a href="/">Return</a>
+  <h6>(According to our algorithm)</h6>
+  <h1>The best items you can get are: </h1>
+  <br>
+  <div class="container">
+    <div class="row align-items-start">
+      {% for res in bestResults %}
+      <div class="col">
+
+        <!-- {{res.Item.name}} with following enchants: <br><br>
+        {% for e in res.Item.enchants %}
+        <div style="text-align:left">+ {{e.name}} {{e.level}}</div>
+        {% endfor %}
+        <br>
+        score: {{res.score}}<br><br>
+        sciezka to: <br><br>
+        {% for path in res.path %}
+        - item {{path.name}}:<br>
+        {% for enchant in path.enchants %}
+        - - enchant {{enchant.name}} {{enchant.level}}<br>
+        {% endfor %}<br>
+        {% endfor %} -->
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-dark">{{res.Item.name}} </h5>
+            <h6 class="card-subtitle mb-2 text-muted">with following enchants:</h6>
+            {% for e in res.Item.enchants %}
+            <p class="card-text text-dark">+ {{e.name}} {{e.level}}</p>
+            {% endfor %}
+            <br>
+            <p class="card-text text-dark">Score: {{res.score}} </p>
+          </div>
+          <div class="card-header text-dark">
+            Path of enchanting process:
+          </div>
+          <ul class="list-group list-group-flush text-dark">
+            {% for path in res.path %}
+
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                     <!-- <li class="list-group-item text-dark">{{path.name}} with:</li>  -->
+                     {{path.name}} with:
+                </div>
+                <div class="col">
+                     <!-- <li class="list-group-item text-dark">  -->
+                    {% for enchant in path.enchants %}
+                    - {{enchant.name}} {{enchant.level}}<br>
+                    {% endfor %}
+                    <br>
+                   <!-- </li>  -->
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+
+
+          </ul>
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+
+</html>
